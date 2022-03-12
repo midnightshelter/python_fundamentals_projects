@@ -1,0 +1,131 @@
+# Program simulates a DNS server, allowing the user to add entries (domain name and IPA), query
+# specific entries and query the entire DNS holdings. Also has the added utility to add IPA's to a "blacklist",
+# removing the IPA from public searches ('query' and 'query all' commands) and only allowing it to be searched through
+# the 'query b' command, which returns the entirety of the "blacklist".
+
+class DNS:
+    def __init__(self):
+        self._domList = []
+
+    def domadd(self, dnsname, ipa):
+        dnsstore = [dnsname, ipa]
+        self._domList.append(dnsstore)
+
+    def querydns(self):
+        return self._domList
+
+
+class blackList(DNS):
+    def __init__(self):
+        super().__init__()
+        self._list = []
+
+    def addlist(self, ipa):
+        self._list.append(ipa)
+
+    def retlist(self):
+        return self._list
+
+
+print("Welcome to DCI27 DNS server.")
+print("")
+print("        * To create a DNS entry, enter 'create'")
+print("        * To query the IPA of a specific DNS entry, enter 'query'")
+print("        * To query the entire database, enter 'query all'")
+print("        * To add a blacklist entry, enter 'blacklist'")
+print("        * To query the blacklisted IPA entries, enter 'query b'")
+print("        * To disconnect from the server, enter 'quit'")
+print("")
+command = None
+server = DNS()
+blist = blackList()
+
+while command != "q":
+
+    command = input("Enter a command: ").strip()
+
+    if command == "create":
+        existDom = server.querydns()
+        dnsName = input("enter a Domain Name: ")
+        ipaAdd = input("enter an IPA: ")
+        dnsCreateCount = 0
+        for stores in existDom:
+            if dnsName in stores:
+                if ipaAdd in stores:
+                    print("This domain name has already been entered.")
+                elif ipaAdd not in stores:
+                    print("This domain name is already registered under a different IPA.")
+                    print(stores)
+                    break
+            elif dnsName not in stores:
+                dnsCreateCount += 1
+        if dnsCreateCount == len(existDom):
+            server.domadd(dnsName, ipaAdd)
+
+    elif command == "query":
+        domainQuery = input("Please enter the domain name you desire to query: ")
+        existDom = server.querydns()
+        dnsQueryCount = 0
+        for stores in existDom:
+            if domainQuery not in stores:
+                pass
+                dnsQueryCount += 1
+            elif domainQuery in stores:
+                if len(stores) >= 2:
+                    print(stores[1])
+                elif len(stores) < 2:
+                    print(None)
+        if dnsQueryCount == len(existDom):
+            print(None)
+
+    elif command == "query all":
+        existDom = server.querydns()
+        print("")
+        for stores in existDom:
+            if len(stores) >= 2:
+                print("Domain Name: ", stores[0])
+                print("IPA: ", stores[1])
+                print("")
+            elif len(stores) < 2:
+                print("Domain Name: ", stores[0])
+                print("")
+
+    elif command == "blacklist":
+        existDom = server.querydns()
+        ipaBlack = input("Please enter an IPA to blacklist: ")
+        listcounter = 0
+        bstores = blist.retlist()
+        for stores in existDom:
+            listcounter += 1
+            if ipaBlack in stores:
+                if ipaBlack not in bstores:
+                    blist.addlist(stores[1])
+                    existDom[listcounter - 1].remove(existDom[listcounter - 1][1])
+                elif ipaBlack in bstores:
+                    existDom[listcounter - 1].remove(existDom[listcounter - 1][1])
+            elif ipaBlack not in stores:
+                pass
+
+    elif command == "query b":
+        bstores = blist.retlist()
+        print("Blacklisted IPA:")
+        print("")
+        for entry in bstores:
+            print(entry)
+        print("")
+
+    elif command == "quit":
+        quit()
+
+    elif command == "help":
+        print("")
+        print("        * To create a DNS entry, enter 'create'")
+        print("        * To query the IPA of a specific DNS entry, enter 'query'")
+        print("        * To query the entire database, enter 'query all'")
+        print("        * To add a blacklist entry, enter 'blacklist'")
+        print("        * To query the blacklisted IPA entries, enter 'query b'")
+        print("        * To disconnect from the server, enter 'quit'")
+        print("")
+
+    else:
+        print("Invalid command.")
