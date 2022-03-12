@@ -1,0 +1,15 @@
+# Program prompts user for a file name / path, file is opened in read mode. For loop is used to iterate line through
+# line, checking for data filled lines, characters and words. Data is gathered in variables which are then printed.
+fileName = open(input("File name: "), 'r')
+line_count = 0
+word_count = 0
+character_count = 0
+for line in fileName:
+    if line != "\n":
+        line_count += 1
+    character_count += len(line)
+    word_count += (len(line.split()))
+print("Characters:", character_count)
+print("Words:", word_count)
+print("Lines:", line_count)
+fileName.close()
