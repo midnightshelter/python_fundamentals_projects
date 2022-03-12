@@ -1,0 +1,16 @@
+# Program prompts user for a file path, program then reads line by line, splitting it into a list. Using index
+# positions, the first, second, last and second list line are retrieved and stored in variables. Variables are then
+# called to print.
+
+fileName = open(input("File name: "), 'r')
+lines = fileName.readlines()
+firstLine = lines[0]
+secondLine = lines[1]
+thirdLine = lines[-2]
+fourthLine = lines[-1]
+print("Output:")
+print(firstLine, end="")
+print(secondLine, end="")
+print(thirdLine, end="")
+print(fourthLine, end="")
+
