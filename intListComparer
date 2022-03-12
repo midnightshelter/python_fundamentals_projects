@@ -1,0 +1,33 @@
+# Program prompts user for 2 lists, program compares the lists and returns a list of elements that
+# occur in both lists, with no duplicates.
+
+length1 = 0
+length2 = 0
+list1Split = None
+list2Split = None
+dupList = []
+
+
+def listcompare():
+    """
+    compares input lists and appends list when the same number is found in both.
+    """
+    for i in range(length1):
+        for j in range(length2):
+            if list1Split[i] == list2Split[j]:
+                if list1Split[i] not in dupList:
+                    dupList.append(list1Split[i])
+                elif list1Split[i] in dupList:
+                    continue
+
+
+while True:
+    list1 = input("List 1: ")
+    list1Split = list1.split()
+    length1 = len(list1Split)
+    list2 = input("List 2: ")
+    list2Split = list2.split()
+    length2 = len(list2Split)
+    dupList = []
+    listcompare()
+    print(dupList)
