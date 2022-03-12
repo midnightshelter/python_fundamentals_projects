@@ -1,0 +1,10 @@
+# this program prompts the user to input a string, if the string has any integers it replaces
+# them with a "_"
+import re
+
+# the below loop continually prompts the user for an input. using an imported re (Regular Expressions)
+# library it parses the input string for any integers ("\d") and replaces them with underscores ("_")
+while True:
+    inputString = input("input a string? ")
+    inputString = re.sub("\d", "_", inputString)
+    print("Output: ", inputString)
