@@ -1,0 +1,28 @@
+#Program asks user for two lists of ints which are then sorted into descending order without using a concatinated list
+#and sort function.
+
+while True:
+    list1 = input("List 1: ").split()
+    list2 = input("List 2: ").split()
+    list1.sort()
+    list2.sort()
+    list1.reverse()
+    list2.reverse()
+    countList = []
+
+    for elem in list(list2):
+        list1.append(elem)
+
+    for i in range(0, len(list1)):
+        list1[i] = int(list1[i])
+
+    while list1:
+        minimum = list1[0]
+        for x in list1:
+            if x < minimum:
+                minimum = x
+        countList.append(minimum)
+        list1.remove(minimum)
+
+    countList.reverse()
+    print(countList)
