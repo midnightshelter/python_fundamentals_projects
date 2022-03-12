@@ -1,0 +1,30 @@
+# Program prompts user for input of a string, checks for a "g" inside the string. If "g" is present,
+# the function "gchecker" runs several cascading if and elif statements determining if another "g"
+# is present within 1 position (positively and negatively). If so, "Happy?: True" is printed.
+# If not, "Happy?: False" is printed.
+
+
+# The below function first checks that the input string is long enough to allow two "g"'s to exist.
+# If not "Happy?: False" is printed immediately. If the string is longer than two, the function
+# runs through a cascading set of if and elif statements to test if another "g" exists within 1
+# position of the original "g"'s index.
+def gchecker():
+    if len(inputString) < 2:
+        print("Happy?: False")
+    elif len(inputString) > 1:
+        if inputString[indexCheck1] == "g":
+            print("Happy?: True")
+        elif inputString[indexCheck1] != "g":
+            if inputString[indexCheck2] == "g":
+                print("Happy?: True")
+            elif inputString[indexCheck2] != "g":
+                print("Happy?: False")
+
+
+while True:
+    inputString = input("String: ")
+    stringTarget = "g"
+    indexNo = inputString.find(stringTarget)
+    indexCheck1 = indexNo - 1
+    indexCheck2 = indexNo + 1
+    gchecker()
