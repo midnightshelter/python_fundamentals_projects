@@ -1,0 +1,21 @@
+# Program prompts user for a list of numbers, rotates the numbers so that the first number becomes
+# the last and iterates continually, rotating the numbers till the original list is printed.
+
+inputList = input("Input a List: ")
+intSplit = inputList.split()
+rotCount = 0
+
+
+def integerconv():
+    """
+    converts the list "intSplit" into integers from strings.
+    """
+    for i in range(0, len(intSplit)):
+        intSplit[i] = int(intSplit[i])
+
+
+while rotCount != (len(intSplit) + 1):
+    integerconv()
+    print(str(intSplit), "")
+    intSplit = intSplit[1:] + intSplit[:1]
+    rotCount += 1
