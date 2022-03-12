@@ -1,0 +1,17 @@
+# Program prompts user for a file path. Program opens file path, reads line by line and uses index references to
+# split each line into a list. Data in each list is averaged and printed.
+fileName = open(input("File name: "))
+lines = fileName.readlines()
+firstLine = lines[0].split()
+secondLine = lines[1].split()
+thirdLine = lines[2].split()
+fourthLine = lines[3].split()
+print("The average of line 1 is ", ((int(firstLine[0]) + int(firstLine[1]) + int(firstLine[2]) +
+                                    int(firstLine[3])) / 4))
+print("The average of line 2 is ", ((int(secondLine[0]) + int(secondLine[1]) + int(secondLine[2]) +
+                                    int(secondLine[3])) / 4))
+print("The average of line 3 is ", ((int(thirdLine[0]) + int(thirdLine[1]) + int(thirdLine[2]) +
+                                    int(thirdLine[3])) / 4))
+print("The average of line 4 is ", ((int(fourthLine[0]) + int(fourthLine[1]) + int(fourthLine[2]) +
+                                    int(fourthLine[3])) / 4))
+fileName.close()
