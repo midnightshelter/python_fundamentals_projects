@@ -1,0 +1,18 @@
+# This program asks the user for two different years, then calculates the days between them
+# including leap years
+
+yearOne = int(input("Year 1? "))
+yearTwo = int(input("Year 2? "))
+dayCount = 0
+
+# the below loop uses both the input years to set a range, then moves through each year checking for
+# leap years and adding 365 to dayCount
+for i in range(yearOne, yearTwo):
+    dayCount += 365
+    if (yearOne % 4) == 0:
+        dayCount += 1
+    else:
+        pass
+    yearOne += 1
+
+print("Number of Days:", dayCount)
