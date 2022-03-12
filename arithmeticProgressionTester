@@ -1,0 +1,43 @@
+#Program prompts user for file extension, program reads file, tests if it has arithmetic progression and if so prints
+#true, if not prints false.
+
+fileName = open(input("File name: "))
+lines = fileName.readlines()
+
+
+def nochecker():
+    if (int(firstLine[1]) - int(firstLine[0])) == (int(firstLine[-1]) - int(firstLine[-2])):
+        print(" ".join(firstLine), "true")
+    else:
+        print(" ".join(firstLine), "false")
+
+    if (int(secondLine[1]) - int(secondLine[0])) == (int(secondLine[-1]) - int(secondLine[-2])):
+        print(" ".join(secondLine), "true")
+    else:
+        print(" ".join(secondLine), "false")
+
+    if (int(thirdLine[1]) - int(thirdLine[0])) == (int(thirdLine[-1]) - int(thirdLine[-2])):
+        print(" ".join(thirdLine), "true")
+    else:
+        print(" ".join(thirdLine), "false")
+
+    if (int(fourthLine[1]) - int(fourthLine[0])) == (int(fourthLine[-1]) - int(fourthLine[-2])):
+        print(" ".join(fourthLine), "true")
+    else:
+        print(" ".join(fourthLine), "false")
+
+    if (int(fifthLine[1]) - int(fifthLine[0])) == (int(fifthLine[-1]) - int(fifthLine[-2])):
+        print(" ".join(fifthLine), "true")
+    else:
+        print(" ".join(fifthLine), "false")
+
+
+firstLine = lines[0].split()
+secondLine = lines[1].split()
+thirdLine = lines[2].split()
+fourthLine = lines[3].split()
+fifthLine = lines[4].split()
+nochecker()
+fileName.close()
+
+
