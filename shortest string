@@ -1,0 +1,28 @@
+# This program continually prompts the user to input a string until the input string starts with
+# "a" or "A". This directs the program to then print the smallest string input by the user.
+
+userInputCheck = 0
+iterCheck = 0
+stringHold = " "
+x = 0
+userInput = input("Enter a String: ")
+
+# the below loop is used to take and check strings, while storing the shortest string input.
+while userInputCheck == 0:
+    iterCheck += 1
+    userInput = input("Enter a String: ")
+    x = len(userInput)
+    if iterCheck < 2:
+        stringHold = userInput
+    elif iterCheck > 2:
+        pass
+    if x <= len(stringHold):
+        stringHold = userInput
+
+    if userInput.startswith("a"):
+        print(stringHold)
+        userInputCheck += 1
+
+    if userInput.startswith("A"):
+        print(stringHold)
+        userInputCheck += 1
