@@ -1,0 +1,23 @@
+# Program allows user to input strings until no "" (or "no input") is entered. When string is input
+# entire string is converted to lowercase, sorted into lexicographical order and flipped, to be
+# output in descending lexicographical order.
+
+userInput = str(input("Enter a String: "))
+inputStrList = list()
+inputCheck = 0
+strSplit = " "
+
+# Below loop checks the variable "inputCheck" to ensure that the break condition has not been met
+# (break condition = no input), if not the loop prompts the user for a string, converts it to lower-
+# case, then to a list, sorts the list and then reverses it, printing in descending lexicographical
+# order. If break condition is met, the loop is stopped with a break call.
+
+while inputCheck == 0:
+    if userInput == "":
+        break
+    strSplit = (userInput.lower().split())
+    strSplit.sort()
+    strSplit.reverse()
+    print("Output: ", end="")
+    print(" ".join(strSplit))
+    userInput = str(input("Enter a String: "))
