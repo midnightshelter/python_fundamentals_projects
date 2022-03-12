@@ -1,0 +1,30 @@
+# Program allows user to input two lists of integers, adding the first and last item of each list
+# comparing the values and printing the largest. If both values are equal / the same, "Same" will be
+# printed.
+
+while True:
+    list1 = (input("List 1: "))
+    list2 = (input("List 2: "))
+
+    splitList1 = list1.split()
+    splitList2 = list2.split()
+
+    lAdd1 = int(splitList1[0])
+    lAdd2 = int(splitList1[-1])
+    lAdd3 = int(splitList2[0])
+    lAdd4 = int(splitList2[-1])
+
+    if len(splitList1) == 1:
+        lAdd1 = int(splitList1[0])
+        lAdd2 = 0
+
+    if len(splitList2) == 1:
+        lAdd3 = int(splitList2[0])
+        lAdd4 = 0
+
+    if (lAdd1 + lAdd2) > (lAdd3 + lAdd4):
+        print("Output:", (lAdd1 + lAdd2))
+    elif (lAdd1 + lAdd2) < (lAdd3 + lAdd4):
+        print("Output: ", (lAdd3 + lAdd4))
+    elif (lAdd1 + lAdd2) == (lAdd3 + lAdd4):
+        print("Output: Same")
