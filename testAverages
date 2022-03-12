@@ -1,0 +1,65 @@
+# Program prompts user to input several "test scores", reads the input and evaluates the average of each student
+# and class. Outputs the highest averages.
+
+# the below loop prompts the user for the input of each student (1-4). user input is then taken and split into lists.
+# to evaluate the highest student average, list items 1-4 (index position [0] to [3]) from each input / list are added
+# together and then divided by 4. returned values are then run through a cascading set of if functions to determine the
+# largest value, which is then printed. to evaluate the highest course average, list items at a specific index
+# reference of each list are added together and run through a similar process as described above, printing the
+# largest value.
+while True:
+    stu1Input = input("Student 1 (courses 1-4): ")
+    stu2Input = input("Student 2 (courses 1-4): ")
+    stu3Input = input("Student 3 (courses 1-4): ")
+    stu4Input = input("Student 4 (courses 1-4): ")
+    stu1List = stu1Input.split()
+    stu2List = stu2Input.split()
+    stu3List = stu3Input.split()
+    stu4List = stu4Input.split()
+    avStu1 = (int(stu1List[0]) + int(stu1List[1]) + int(stu1List[2]) + int(stu1List[3])) / 4
+    avStu2 = (int(stu2List[0]) + int(stu2List[1]) + int(stu2List[2]) + int(stu2List[3])) / 4
+    avStu3 = (int(stu3List[0]) + int(stu3List[1]) + int(stu3List[2]) + int(stu3List[3])) / 4
+    avStu4 = (int(stu4List[0]) + int(stu4List[1]) + int(stu4List[2]) + int(stu4List[3])) / 4
+    course1Av = (int(stu1List[0]) + int(stu2List[0]) + int(stu3List[0]) + int(stu4List[0])) / 4
+    course2Av = (int(stu1List[1]) + int(stu2List[1]) + int(stu3List[1]) + int(stu4List[1])) / 4
+    course3Av = (int(stu1List[2]) + int(stu2List[2]) + int(stu3List[2]) + int(stu4List[2])) / 4
+    course4Av = (int(stu1List[3]) + int(stu2List[3]) + int(stu3List[3]) + int(stu4List[3])) / 4
+    highestAv = None
+    courseHiAv = None
+    if avStu1 > avStu2:
+        if avStu1 > avStu3:
+            if avStu1 > avStu4:
+                highestAv = avStu1
+    if avStu2 > avStu1:
+        if avStu2 > avStu3:
+            if avStu2 > avStu4:
+                highestAv = avStu2
+    if avStu3 > avStu1:
+        if avStu3 > avStu2:
+            if avStu3 > avStu4:
+                highestAv = avStu3
+    if avStu4 > avStu1:
+        if avStu4 > avStu2:
+            if avStu4 > avStu3:
+                highestAv = avStu4
+    if course1Av > course2Av:
+        if course1Av > course3Av:
+            if course1Av > course4Av:
+                courseHiAv = course1Av
+    if course2Av > course1Av:
+        if course2Av > course3Av:
+            if course2Av > course4Av:
+                courseHiAv = course2Av
+    if course3Av > course1Av:
+        if course3Av > course2Av:
+            if course3Av > course4Av:
+                courseHiAv = course3Av
+    if course4Av > course1Av:
+        if course4Av > course2Av:
+            if course4Av > course3Av:
+                courseHiAv = course4Av
+    print("The highest average mark of students: ", highestAv)
+    print("The highest average mark of courses: ", courseHiAv)
+
+
+
