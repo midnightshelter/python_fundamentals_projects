@@ -1,0 +1,83 @@
+# GoCard class that allows users to perform some functions with data stored and called using the driver program.
+
+class GoCard:
+    def __init__(self, initBal):
+        self._balance = initBal
+        self._trsct = []
+
+    def rideTrans(self, cost):
+        self._balance -= float(cost)
+        self._trsct.append(0 - (float(cost)))
+
+    def topUpTrans(self, amount):
+        self._balance += float(amount)
+        self._trsct.append(float(amount))
+
+    def getTrans(self):
+        return self._trsct
+
+    def getBal(self):
+        return float(self._balance)
+
+
+initialBal = float(input("Creating account. Input initial balance: "))
+card = GoCard(initialBal)
+command = None
+while command != "q":
+    command = input("? ")
+
+    if "r" in command:
+        command.strip()
+        if len(command) > 1:
+            rideCost = command[1:].strip()
+            card.rideTrans(float(rideCost))
+        else:
+            print("Bad command.")
+
+    elif "t" in command:
+        command.strip()
+        if len(command) > 1:
+            topUp = command[1:].strip()
+            card.topUpTrans(topUp)
+        else:
+            print("Bad command.")
+
+    elif "b" in command:
+        print("Balance = ${:.2f}".format(card.getBal()))
+
+    elif "q" in command:
+        command.strip()
+        if len(command) <= 1:
+            transactions = card.getTrans()
+            init = initialBal
+            print("Statement:")
+            print("event                            amount ($)    balance ($)")
+            print("Initial Balance                                 {:.2f}".format(initialBal))
+
+            for trsc in transactions:
+                if trsc < 0:
+                    if trsc > -10:
+                        init = init + trsc
+                        print("Ride                              {:.2f}".format(trsc) + "         " + "{:.2f}".format(
+                            init))
+                    elif trsc < -10:
+                        init = init + trsc
+                        print("Ride                              {:.2f}".format(trsc) + "        " + "{:.2f}".format(
+                            init))
+                elif trsc > 0:
+                    if trsc > 10:
+                        init = init + trsc
+                        print("Top up                             {:.2f}".format(trsc) + "        " + "{:.2f}".format(
+                            init))
+                    elif trsc < 10:
+                        init = init + trsc
+                        print("Top up                             {:.2f}".format(trsc) + "         " + "{:.2f}".format(
+                            init))
+
+            print("Final balance                                   {:.2f}".format(init))
+
+        else:
+            print("Bad command.")
+
+    else:
+        print("Bad command.")
