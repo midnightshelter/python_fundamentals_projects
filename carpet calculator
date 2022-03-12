@@ -1,0 +1,20 @@
+# this program prompts the user for 2 room dimensions continuously until either dimension is 0
+# it then prints the Length and Width as input, then prints the rounded input to account for waste
+import math
+
+roomDi1 = float(input("Enter room dimension 1 (m) "))
+roomDi2 = float(input("Enter room dimension 2 (m) "))
+
+# the below loop continuously asks for the input (2 room dimensions) until either dimension is 0.
+# also prints the input, then rounds input to the next integer and prints
+while True:
+    if roomDi1 == 0:
+        break
+    if roomDi2 == 0:
+        break
+    print("Length =", roomDi1, "m")
+    print("Width =", roomDi2, "m")
+    print("Total length required lengthways =", math.ceil(roomDi1))
+    print("Total length required widthways =", math.ceil(roomDi2))
+    roomDi1 = float(input("Enter room dimension 1 (m) "))
+    roomDi2 = float(input("Enter room dimension 2 (m) "))
