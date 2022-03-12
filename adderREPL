@@ -1,0 +1,77 @@
+# Adder REPL
+
+command = None
+print("Welcome to the Adder REPL.")
+var = 0
+variableDictionary = {}
+notCount = 0
+
+while command != "quit":
+    notCount = 0
+    command = input("??? ")
+    commandSplit = command.split()
+
+    # command to quit the program
+    if command == "quit":
+        print("Goodbye.")
+        notCount += 1
+        quit()
+
+    # command to prompt for input for var name
+    if commandSplit[0] == "input":
+        varInFocus = commandSplit[-1]
+        variableDictionary[varInFocus] = input("Enter a value for" + str(" ") + commandSplit[-1] + str(": "))
+        notCount += 1
+
+    # command to print value of var name
+    if commandSplit[0] == "print":
+        if commandSplit[-1] in variableDictionary:
+            varInFocus = commandSplit[-1]
+            print(varInFocus + " " + "equals" + " " + variableDictionary[varInFocus])
+            notCount += 1
+        if commandSplit[-1].isnumeric():
+            print(int(commandSplit[-1]))
+            notCount += 1
+        else:
+            if commandSplit[-1] in variableDictionary:
+                pass
+                notCount += 1
+            else:
+                print(commandSplit[-1] + str(" is not defined."))
+                notCount += 1
+
+    # command to get / amend the value of var name
+    if len(commandSplit) >= 3:
+        if commandSplit[1] == "gets":
+            notCount += 1
+            varInFocus = commandSplit[0]
+            if commandSplit[-1].isnumeric():
+                variableDictionary[varInFocus] = int(commandSplit[-1])
+                variableDictionary[varInFocus] = str(variableDictionary[varInFocus])
+            elif not commandSplit[-1].isnumeric():
+                if commandSplit[-1] in variableDictionary:
+                    variableDictionary[varInFocus] = variableDictionary[commandSplit[-1]]
+                else:
+                    print("Syntax error.")
+    else:
+        pass
+
+    # command to add value to var name
+    if len(commandSplit) >= 3:
+        if commandSplit[1] == "adds":
+            notCount += 1
+            if commandSplit[-1].isnumeric():
+                variableDictionary[varInFocus] = int(variableDictionary[varInFocus]) + int(commandSplit[-1])
+                variableDictionary[varInFocus] = str(variableDictionary[varInFocus])
+            elif not commandSplit[-1].isnumeric():
+                variableDictionary[varInFocus] = int(variableDictionary[varInFocus]) + \
+                                                 int(variableDictionary[commandSplit[-1]])
+                variableDictionary[varInFocus] = str(variableDictionary[varInFocus])
+    else:
+        pass
+
+    # if condition used to determine if input command was viable or if it was a syntax error
+    if notCount == 0:
+        print("Syntax error.")
+    elif notCount <= 1:
+        noCount = 0
