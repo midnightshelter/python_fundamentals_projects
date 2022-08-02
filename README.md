@@ -1,3 +1,3 @@
 # python_fundamentals_projects
 
-A collection of projoects coded myself in a python fundamentals course at university. 
+A collection of projects coded in a python fundamentals course in university. 
